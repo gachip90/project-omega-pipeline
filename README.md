@@ -49,9 +49,17 @@ Each article is saved as one Markdown file with the article title as `# Heading`
 
 Chunks are split on `##` and `###` headings. Every chunk repeats the article title and keeps the `Article URL` footer so File Search responses can cite the original support article.
 
+## Daily Job
+
+I originally planned to deploy the scraper as a daily job on DigitalOcean Platform Jobs, but I hit an external blocker while setting up payment on the account, so the scheduled run was moved to GitHub Actions for this submission window.
+
+The repository uses [`.github/workflows/daily-scraper.yml`](.github/workflows/daily-scraper.yml) to run `python main.py` on a daily cron schedule and also supports manual runs through `workflow_dispatch`.
+
 ## Daily Job Logs
 
-TODO: Add DigitalOcean daily job logs link or last-run artifact after deployment.
+![GitHub Actions daily run log](assets/github-actions-log.png)
+
+The screenshot above shows a successful GitHub Actions run of the daily sync job, including article fetch, delta detection, chunk generation, vector upload, and `sync_state.json` update.
 
 ## Playground Screenshot
 
